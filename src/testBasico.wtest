@@ -1,0 +1,93 @@
+import personas.*
+import planetas.*
+
+
+describe "Test sobre escenario Basico"{
+	const julieta = new Personas(edad=42)
+	const ana = new Atletas(edad=25)
+	const rosa = new Atletas(edad=45)
+	const perla = new Atletas(edad=28)
+	const monica = new Docentes(edad=45, cursosQueDio = 6)
+	const luisa = new Docentes(edad=35, cursosQueDio = 1 )
+	
+	const triton = new Planeta(habitantes=[julieta, ana, rosa, perla, monica, luisa])
+
+method initialize(){
+	rosa.cantTecnicasConoce(8)
+	perla.cantTecnicasConoce(4)
+	perla.masaMuscular(6)
+	
+}
+
+test "Julieta potencia 20"{
+	assert.equals(20, julieta.potencia())	
+}
+test "Ana potencia 28"{
+	assert.equals(28, ana.potencia())
+}
+test "rosa potencia 52"{
+	assert.equals(52, rosa.potencia())
+}
+test "perla potencia 44"{
+	assert.equals(44, perla.potencia())
+}
+test "monica potencia 20"{
+	assert.equals(20, monica.potencia())
+}
+test "luisa potencia 20"{
+	assert.equals(20, luisa.potencia())
+}
+test "julieta inteligencia 8"{
+	assert.equals(8, julieta.inteligencia())
+}
+test "ana inteligencia 12"{
+	assert.equals(12, ana.inteligencia())
+}
+test "rosa inteligencia 8"{
+	assert.equals(8, rosa.inteligencia())
+}
+test "perla inteligencia 12"{
+	assert.equals(12, perla.inteligencia())
+}
+test "monica inteligencia 20"{
+	assert.equals(20, monica.inteligencia())
+}
+test "luisa inteligencia 14"{
+	assert.equals(14, luisa.inteligencia())
+}
+
+test "julieta no es destacada"{
+	assert.notThat(julieta.esDestacada())
+}
+test "ana es destacada"{
+	assert.that(ana.esDestacada())
+}
+test "rosa es destacada"{
+	assert.that(rosa.esDestacada())
+}
+test "perla no es destacada"{
+	assert.notThat(perla.esDestacada())
+}
+test "monica es destacada"{
+	assert.that(monica.esDestacada())
+}
+test "luisa no es destacada"{
+	assert.notThat(luisa.esDestacada())
+}
+
+
+test "triton delegacion diplomatica"{
+	assert.equals([ana, rosa, monica], triton.delegacionDiplomatica())
+}
+test "triton valor inicial de defensa"{
+	assert.equals(2, triton.valorInicialDefensa())
+}
+test "triton no es culto"{
+	assert.notThat(triton.esCulto())
+}
+test "triton potenciaReal"{
+	assert.equals(184, triton.potenciaReal())
+}
+
+}
+
