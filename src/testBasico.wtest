@@ -11,13 +11,17 @@ describe "Test sobre escenario Basico"{
 	const luisa = new Docentes(edad=35, cursosQueDio = 1 )
 	
 	const triton = new Planeta(habitantes=[julieta, ana, rosa, perla, monica, luisa])
+	//const juan = new Soldados(edad= 50, coleccionArmas=[pistolete])
+	// const pistolete = new Pistolete(largoEnCm= 8)
 
 method initialize(){
 	rosa.cantTecnicasConoce(8)
 	perla.cantTecnicasConoce(4)
 	perla.masaMuscular(6)
-	
+	//juan.coleccioArmas([pistolete])
 }
+
+
 
 test "Julieta potencia 20"{
 	assert.equals(20, julieta.potencia())	
@@ -88,6 +92,8 @@ test "triton no es culto"{
 test "triton potenciaReal"{
 	assert.equals(184, triton.potenciaReal())
 }
+
+
 
 }
 

@@ -3,7 +3,7 @@ import personas.*
 class Planeta{
 	var property habitantes = []
 	var property cantMuseos = 0
-	var property longMurallas
+	var property longMurallas = 0
 	
 	
 	method delegacionDiplomatica() = habitantes.filter( {h => h.esDestacada() } )
@@ -17,6 +17,8 @@ class Planeta{
 	method necesitaReforzar()= self.potenciaAparente() >= self.potenciaReal()*2
 	method recibirTributos() = 	habitantes.ofrecerTributo()
 	method habitantesValiosos() = habitantes.filter( { h => h.valor() >= 40 } )
-	method apaciguarOtroPlaneta(planeta, otroPlaneta) {
-		return planeta.habitantesValiosos.all(  { o => o.ofrecerTributo(otroPlaneta) })}
+	method apaciguarOtroPlaneta(otroPlaneta) =	 
+		habitantes.habitantesValiosos().all(  { h => h.ofrecerTributo(otroPlaneta) }) 
+		
 }
+
