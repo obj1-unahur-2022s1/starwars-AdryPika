@@ -1,3 +1,12 @@
+/*
+ * No era necesario utilizar un initialize(). En la creación de las instancias 
+ * se podía indicar los valores de cada persona.
+ * Faltan los test pedidos sobre Perla: entrene 15 días y aprenda una técnica. 
+ * Después de eso, la potencia tiene que ser 65, y todavía no tiene que ser destacada. 
+ * Después hacer que aprenda una técnica más. Después de aprender esta segunda 
+ * técnica adicional, Perla tiene que ser destacada.
+ */
+
 import personas.*
 import planetas.*
 
@@ -5,22 +14,35 @@ import planetas.*
 describe "Test sobre escenario Basico"{
 	const julieta = new Personas(edad=42)
 	const ana = new Atletas(edad=25)
-	const rosa = new Atletas(edad=45)
-	const perla = new Atletas(edad=28)
+	const rosa = new Atletas(edad=45, cantTecnicasConoce=8)
+	const perla = new Atletas(edad=28, cantTecnicasConoce=4, masaMuscular=6)
 	const monica = new Docentes(edad=45, cursosQueDio = 6)
 	const luisa = new Docentes(edad=35, cursosQueDio = 1 )
 	
 	const triton = new Planeta(habitantes=[julieta, ana, rosa, perla, monica, luisa])
+	/* no debe aparecer código comentado 
 	//const juan = new Soldados(edad= 50, coleccionArmas=[pistolete])
 	// const pistolete = new Pistolete(largoEnCm= 8)
+	*/
 
+/*
+ * Esto se podía definir en la creación de las instancias (personas)
 method initialize(){
 	rosa.cantTecnicasConoce(8)
 	perla.cantTecnicasConoce(4)
 	perla.masaMuscular(6)
 	//juan.coleccioArmas([pistolete])
 }
+ */
 
+method fase1() {
+	perla.entrenar(15)
+	perla.aprenderTecnica()
+}
+
+method fase2() {
+	perla.aprenderTecnica()
+}
 
 
 test "Julieta potencia 20"{
@@ -94,6 +116,22 @@ test "triton potenciaReal"{
 }
 
 
+
+test "perla entrena 15 días y aprende 1 tecnica, potencia debe ser 65" {
+	self.fase1()
+	assert.equals(65,perla.potencia())
+}
+
+test "perla entrena 15 días y aprende 1 tecnica, no es destacada" {
+	self.fase1()
+	assert.notThat(perla.esDestacada())
+}
+
+test "perla aprende otra técnica, ahora es destacada" {
+	self.fase1()
+	self.fase2()
+	assert.that(perla.esDestacada())
+}
 
 }
 
